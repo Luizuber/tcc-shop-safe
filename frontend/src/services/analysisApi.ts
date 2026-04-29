@@ -1,6 +1,6 @@
 import { AnalysisRequest, AnalysisResult } from '../types/AnalysisResult';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000/analysis';
+const API_URL = 'https://tcc-shop-safe.onrender.com/analysis';
 
 export async function analyzeProduct(data: AnalysisRequest): Promise<AnalysisResult> {
     try {
