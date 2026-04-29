@@ -1,0 +1,54 @@
+{
+    "manifest_version": 3,
+    "name": "Shop Safe AI",
+    "version": "1.0.0",
+    "description": "Suporte à decisão baseado em IA para compras online",
+    "permissions": [
+        "activeTab",
+        "scripting",
+        "tabs",
+        "storage"
+    ],
+    "host_permissions": [
+        "<all_urls>",
+        "http://localhost:3000/*"
+    ],
+    "background": {
+        "service_worker": "background.js",
+        "type": "module"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "<all_urls>"
+            ],
+            "js": [
+                "content-loader.js"
+            ],
+            "run_at": "document_idle"
+        }
+    ],
+    "action": {
+        "default_title": "Shop Safe AI"
+    },
+    "commands": {
+        "toggle-panel": {
+            "suggested_key": {
+                "default": "Ctrl+Shift+S"
+            },
+            "description": "Toggle Shop Safe AI Panel"
+        }
+    },
+    "web_accessible_resources": [
+        {
+            "resources": [
+                "assets/*",
+                "index.html",
+                "content.js"
+            ],
+            "matches": [
+                "<all_urls>"
+            ]
+        }
+    ]
+}
