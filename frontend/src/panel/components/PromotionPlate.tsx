@@ -16,7 +16,6 @@ const DEFAULT_MESSAGES = [
 
 export function PromotionPlate({ messages = DEFAULT_MESSAGES, speed = 15 }: PromotionPlateProps) {
     const { theme } = useTheme();
-    const c = getColors(theme);
     const combinedMessage = messages.join(' • ');
 
     return (
