@@ -56,3 +56,24 @@
 .ssa-panel-v2 *::-webkit-scrollbar-thumb:hover {
   background: rgba(0, 180, 212, 0.5);
 }
+
+/* Ticker Marquee Animation */
+@keyframes ssa-ticker {
+  from { transform: translateX(100%); }
+  to { transform: translateX(-100%); }
+}
+
+.ssa-ticker-container {
+  flex: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  margin: 0 10px;
+}
+
+.ssa-ticker-text {
+  display: inline-block;
+  animation: ssa-ticker 12s linear infinite;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+}

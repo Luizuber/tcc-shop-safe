@@ -49,24 +49,16 @@ export function ExtensionPopup({ analysis, alternativeSellers: _, onViewDetails,
                 {/* Background ambient glow */}
                 <div className="absolute top-0 left-0 w-32 h-full opacity-20 blur-xl pointer-events-none" style={{ background: `linear-gradient(90deg, ${c.accent}, transparent)` }}></div>
 
-                <div className="flex items-center gap-2.5 relative z-10">
-                    <div className="relative flex items-center justify-center">
-                        {/* Logo Principal (Clean & Integrated) */}
-                        <div className="relative flex items-center justify-center p-2 rounded-lg backdrop-blur-md z-10 transition-transform duration-300 group-hover:scale-105"
-                            style={{
-                                background: `rgba(255, 255, 255, 0.1)`,
-                                border: `1px solid rgba(255, 255, 255, 0.2)`,
-                            }}>
-                            <CyberShield color={theme === 'dark' ? '#ffffff' : c.textPrimary} />
+                <div className="flex-1 flex items-center justify-center relative z-10 overflow-hidden">
+                    <div className="ssa-ticker-container">
+                        <div className="ssa-ticker-text">
+                            <span className="font-black tracking-widest text-[14px] leading-none mr-12" style={{ color: theme === 'dark' ? '#ffffff' : c.textPrimary }}>
+                                SHOP SAFE • AI PROTECTION
+                            </span>
+                            <span className="font-black tracking-widest text-[14px] leading-none mr-12" style={{ color: theme === 'dark' ? '#ffffff' : c.textPrimary }}>
+                                SHOP SAFE • AI PROTECTION
+                            </span>
                         </div>
-                    </div>
-                    <div className="flex flex-col">
-                        <span className="font-black tracking-widest text-[14px] leading-none" style={{ color: theme === 'dark' ? '#ffffff' : c.textPrimary }}>
-                            SHOP SAFE
-                        </span>
-                        <span className="font-bold tracking-widest text-[8px] uppercase mt-0.5" style={{ color: theme === 'dark' ? 'rgba(255,255,255,0.7)' : c.textMuted }}>
-                            AI Protection
-                        </span>
                     </div>
                 </div>
                 <div className="flex items-center gap-2 relative z-10">
