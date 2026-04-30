@@ -16,15 +16,6 @@ interface ExtensionPopupProps {
     onMinimize: () => void;
 }
 
-// Cyberpunk Shield Icon
-const CyberShield = ({ color }: { color: string }) => (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12 2L3 7V12C3 17.25 6.75 22.08 12 23C17.25 22.08 21 17.25 21 12V7L12 2Z"
-            stroke={color} strokeWidth="1.5" fill={`${color}26`} />
-        <path d="M12 6L7 9V12.5C7 15.75 9 18.5 12 19.5C15 18.5 17 15.75 17 12.5V9L12 6Z"
-            stroke={color} strokeWidth="1" fill={`${color}1a`} />
-    </svg>
-);
 
 export function ExtensionPopup({ analysis, alternativeSellers: _, onViewDetails, onViewPrices, onOpenSettings, onMinimize }: ExtensionPopupProps) {
     const [isAiSummaryExpanded, setIsAiSummaryExpanded] = useState(true);
