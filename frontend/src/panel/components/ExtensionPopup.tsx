@@ -44,12 +44,12 @@ export function ExtensionPopup({ analysis, alternativeSellers: _, onViewDetails,
                 {/* Left: Minimize */}
                 <button onClick={onMinimize} className="p-1.5 rounded-md transition-all flex items-center justify-center group relative z-10 ml-1" 
                     style={{ 
-                        background: 'rgba(0,0,0,0.03)', 
-                        border: `1px solid rgba(0,0,0,0.05)`, 
+                        background: theme === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.03)', 
+                        border: theme === 'dark' ? '1px solid rgba(255,255,255,0.1)' : '1px solid rgba(0,0,0,0.05)', 
                         color: 'var(--host-accent, #00b8d4)' 
                     }}
-                    onMouseEnter={e => { e.currentTarget.style.background = 'rgba(0,0,0,0.06)'; e.currentTarget.style.transform = 'scale(1.1)'; }}
-                    onMouseLeave={e => { e.currentTarget.style.background = 'rgba(0,0,0,0.03)'; e.currentTarget.style.transform = 'scale(1)'; }} aria-label="Minimizar">
+                    onMouseEnter={e => { e.currentTarget.style.background = theme === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.06)'; e.currentTarget.style.transform = 'scale(1.1)'; }}
+                    onMouseLeave={e => { e.currentTarget.style.background = theme === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.03)'; e.currentTarget.style.transform = 'scale(1)'; }} aria-label="Minimizar">
                     <Minus className="w-3.5 h-3.5" />
                 </button>
 
@@ -59,12 +59,12 @@ export function ExtensionPopup({ analysis, alternativeSellers: _, onViewDetails,
                 {/* Right: Settings */}
                 <button onClick={onOpenSettings} className="p-1.5 rounded-md transition-all flex items-center justify-center group relative z-10 mr-1" 
                     style={{ 
-                        background: 'rgba(0,0,0,0.03)', 
-                        border: `1px solid rgba(0,0,0,0.05)`, 
+                        background: theme === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.03)', 
+                        border: theme === 'dark' ? '1px solid rgba(255,255,255,0.1)' : '1px solid rgba(0,0,0,0.05)', 
                         color: 'var(--host-accent, #00b8d4)' 
                     }}
-                    onMouseEnter={e => { e.currentTarget.style.background = 'rgba(0,0,0,0.06)'; e.currentTarget.style.transform = 'scale(1.1)'; }}
-                    onMouseLeave={e => { e.currentTarget.style.background = 'rgba(0,0,0,0.03)'; e.currentTarget.style.transform = 'scale(1)'; }} aria-label="Settings">
+                    onMouseEnter={e => { e.currentTarget.style.background = theme === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.06)'; e.currentTarget.style.transform = 'scale(1.1)'; }}
+                    onMouseLeave={e => { e.currentTarget.style.background = theme === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.03)'; e.currentTarget.style.transform = 'scale(1)'; }} aria-label="Settings">
                     <SettingsIcon className="w-3.5 h-3.5 group-hover:rotate-90 transition-transform duration-300" />
                 </button>
             </div>

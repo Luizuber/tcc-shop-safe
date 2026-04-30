@@ -1,3 +1,5 @@
+import { useTheme } from '../context/ThemeContext';
+
 interface PromotionPlateProps {
     messages?: string[];
     speed?: number; // duration in seconds
@@ -12,10 +14,11 @@ const DEFAULT_MESSAGES = [
 ];
 
 export function PromotionPlate({ messages = DEFAULT_MESSAGES, speed = 15 }: PromotionPlateProps) {
+    const { theme } = useTheme();
     const combinedMessage = messages.join(' • ');
 
     return (
-        <div className="ssa-promo-plate group">
+        <div className={`ssa-promo-plate group ${theme}`}>
             {/* Letreiro Deslizante */}
             <div className="ssa-promo-ticker">
                 <div className="ssa-promo-text" style={{ animationDuration: `${speed}s`, color: 'var(--host-accent, #00b8d4)' }}>

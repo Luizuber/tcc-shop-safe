@@ -83,7 +83,7 @@ export const darkColors: ThemeColors = {
     bgSecondary: 'rgba(10, 20, 45, 0.7)',
     bgCard: 'rgba(10, 20, 45, 0.7)',
     bgCardHover: 'rgba(0, 180, 212, 0.05)',
-    bgHeader: '#ffffff',
+    bgHeader: '#050a15',
     bgFooter: 'rgba(10, 20, 45, 0.95)',
 
     borderPrimary: 'color-mix(in srgb, var(--host-accent, #00b8d4), transparent 80%)',
