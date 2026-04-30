@@ -20,9 +20,17 @@ export function isProductPage(): boolean {
     }
 
     const url = window.location.href.toLowerCase();
+    const hostname = window.location.hostname;
+    const isShopee = hostname.includes('shopee.com.br');
+
     const productPatterns = ['/p/', '/produto/', '/product/', '/dp/', '/item/', '/produtos/'];
     if (productPatterns.some(p => url.includes(p))) {
         console.log('[Shop Safe AI] Detected via URL pattern');
+        return true;
+    }
+
+    if (isShopee && url.includes('-i.')) {
+        console.log('[Shop Safe AI] Detected via Shopee specific pattern');
         return true;
     }
 
@@ -72,7 +80,9 @@ function getProductPrice(): number {
         '[class*="price"]',
         '[class*="valor"]',
         '[class*="preco"]',
-        '.andes-money-amount__fraction'
+        '.andes-money-amount__fraction',
+        '.vZ976u', // Shopee
+        '.flex.items-center.G2747v' // Shopee alternate
     ];
     for (const selector of semanticSelectors) {
         const el = document.querySelector(selector);

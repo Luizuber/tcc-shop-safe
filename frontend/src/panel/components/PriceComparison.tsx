@@ -37,7 +37,8 @@ export function PriceComparison({ analysis, alternativeSellers: _, onBack, onMin
         <div className="h-full flex flex-col" style={{ background: c.bgPrimary, color: c.textPrimary }}>
             <div className="flex items-center justify-between px-4 py-3 transition-colors ssa-drag-handle cursor-grab active:cursor-grabbing relative overflow-hidden" style={{ background: c.bgHeader, borderBottom: `1px solid ${c.borderPrimary}` }}>
                 {/* Background ambient glow */}
-                <div className="absolute top-0 left-0 w-32 h-full opacity-20 blur-xl pointer-events-none" style={{ background: `linear-gradient(90deg, ${c.accent}, transparent)` }}></div>
+                <div className="absolute top-0 left-0 w-32 h-full opacity-30 blur-2xl pointer-events-none" style={{ background: `linear-gradient(90deg, var(--host-accent, ${c.accent}), transparent)` }}></div>
+                <div className="absolute top-0 right-0 w-32 h-full opacity-20 blur-2xl pointer-events-none" style={{ background: `linear-gradient(-90deg, var(--host-accent, ${c.accent}), transparent)` }}></div>
                 
                 <div className="flex items-center gap-3 flex-1 min-w-0 relative z-10">
                     <button onClick={onBack} className="p-2 rounded-lg transition-all" style={{ color: theme === 'dark' ? '#ffffff' : c.textMuted }} onMouseEnter={e => hoverBtn(e, true)} onMouseLeave={e => hoverBtn(e, false)} aria-label="Back"><ArrowLeft className="w-4 h-4" /></button>
@@ -50,12 +51,12 @@ export function PriceComparison({ analysis, alternativeSellers: _, onBack, onMin
             </div>
 
             <div className="flex-1 overflow-y-auto px-4 pt-4 pb-20">
-                {analysis.warnings.some(w => w.id === 'price-correction') && (
+                {analysis.warnings.some(w => w.id === 'price-correction' || w.type === 'counterfeit-risk') && (
                     <div className="mb-3 p-2.5 rounded-xl flex items-center gap-3" style={{ background: c.accentSubtle, border: `1px solid ${c.borderAccent}` }}>
-                        <div className="p-1.5 rounded-lg" style={{ background: c.accentSubtle }}><Shield className="w-3.5 h-3.5" style={{ color: c.accent }} /></div>
+                        <div className="p-1.5 rounded-lg" style={{ background: c.accentSubtle }}><Shield className="w-3.5 h-3.5" style={{ color: 'var(--host-accent, #00b8d4)' }} /></div>
                         <div>
-                            <p className="text-[10px] font-bold" style={{ color: c.accent }}>Preço Corrigido via API</p>
-                            <p className="text-[9px]" style={{ color: c.textMuted }}>Valor real validado após detectar possível parcela.</p>
+                            <p className="text-[10px] font-bold" style={{ color: 'var(--host-accent, #00b8d4)' }}>Validação Inteligente Ativa</p>
+                            <p className="text-[9px]" style={{ color: c.textMuted }}>O sistema detectou inconsistências e validou o risco de mercado.</p>
                         </div>
                     </div>
                 )}

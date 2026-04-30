@@ -5,6 +5,7 @@ interface Settings {
     showWarnings: boolean;
     notifications: boolean;
     minTrustScore: number;
+    maxPriceDiscount: number;
 }
 
 interface SettingsContextType extends Settings {
@@ -13,6 +14,7 @@ interface SettingsContextType extends Settings {
     updateShowWarnings: (value: boolean) => void;
     updateNotifications: (value: boolean) => void;
     updateMinTrustScore: (value: number) => void;
+    updateMaxPriceDiscount: (value: number) => void;
 }
 
 const DEFAULT_SETTINGS: Settings = {
@@ -20,6 +22,7 @@ const DEFAULT_SETTINGS: Settings = {
     showWarnings: true,
     notifications: true,
     minTrustScore: 50,
+    maxPriceDiscount: 30,
 };
 
 const SettingsContext = createContext<SettingsContextType | undefined>(undefined);
@@ -51,6 +54,7 @@ export const SettingsProvider: React.FC<{ children: React.ReactNode }> = ({ chil
         updateShowWarnings: (showWarnings) => updateSettings({ showWarnings }),
         updateNotifications: (notifications) => updateSettings({ notifications }),
         updateMinTrustScore: (minTrustScore) => updateSettings({ minTrustScore }),
+        updateMaxPriceDiscount: (maxPriceDiscount) => updateSettings({ maxPriceDiscount }),
     };
 
     return (

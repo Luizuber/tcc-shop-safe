@@ -1,4 +1,4 @@
-import { Settings as SettingsIcon, ChevronRight, ChevronDown, ChevronUp, AlertTriangle, Minus } from 'lucide-react';
+import { Settings as SettingsIcon, ChevronRight, ChevronDown, ChevronUp, AlertTriangle, Minus, Zap } from 'lucide-react';
 import { useState } from 'react';
 import { TrustScore } from './TrustScore';
 import { WarningBadge } from './WarningBadge';
@@ -37,9 +37,10 @@ export function ExtensionPopup({ analysis, alternativeSellers: _, onViewDetails,
     return (
         <div className="h-full flex flex-col overflow-hidden" style={{ background: c.bgPrimary, color: c.textPrimary }}>
             {/* Header */}
-            <div className="flex items-center justify-between px-2 py-3.5 transition-colors relative overflow-hidden ssa-drag-handle cursor-grab active:cursor-grabbing" style={{ background: c.bgHeader }}>
+            <div className="flex items-center justify-between px-2 py-3.5 transition-colors relative overflow-hidden ssa-drag-handle cursor-grab active:cursor-grabbing" style={{ background: c.bgHeader, borderBottom: `1px solid ${c.borderPrimary}` }}>
                 {/* Background ambient glow */}
-                <div className="absolute top-0 left-0 w-32 h-full opacity-20 blur-xl pointer-events-none" style={{ background: `linear-gradient(90deg, ${c.accent}, transparent)` }}></div>
+                <div className="absolute top-0 left-0 w-32 h-full opacity-30 blur-2xl pointer-events-none" style={{ background: `linear-gradient(90deg, var(--host-accent, ${c.accent}), transparent)` }}></div>
+                <div className="absolute top-0 right-0 w-32 h-full opacity-20 blur-2xl pointer-events-none" style={{ background: `linear-gradient(-90deg, var(--host-accent, ${c.accent}), transparent)` }}></div>
 
                 {/* Left: Minimize */}
                 <button onClick={onMinimize} className="p-1.5 rounded-md transition-all flex items-center justify-center group relative z-10 ml-1" 
@@ -91,9 +92,12 @@ export function ExtensionPopup({ analysis, alternativeSellers: _, onViewDetails,
                 <div className="mb-4">
                     <div className="w-full rounded-xl p-4 transition-all text-left" style={{ background: c.bgCard, border: `1px solid ${c.borderPrimary}` }}>
                         <button onClick={() => setIsAiSummaryExpanded(!isAiSummaryExpanded)} className="w-full flex items-center justify-between mb-1">
-                            <h3 className="font-semibold flex items-center gap-2" style={{ color: c.textLabel }}>
-                                <span>Resumo da IA</span>
-                                <span className="text-[10px] px-1.5 py-0.5 rounded uppercase tracking-wider font-bold" style={{ background: c.badgeBg, color: c.badgeText, border: c.badgeBorder }}>Smart</span>
+                            <h3 className="font-bold flex items-center gap-2" style={{ color: c.textLabel }}>
+                                <div className="p-1.5 rounded-lg" style={{ background: 'var(--host-accent, #00b8d4)1a' }}>
+                                    <Zap className="w-3.5 h-3.5" style={{ color: 'var(--host-accent, #00b8d4)' }} />
+                                </div>
+                                <span className="text-xs uppercase tracking-wider">Resumo da IA</span>
+                                <span className="text-[8px] px-1.5 py-0.5 rounded-full uppercase tracking-widest font-black" style={{ background: 'var(--host-accent, #00b8d4)26', color: 'var(--host-accent, #00b8d4)', border: `1px solid var(--host-accent, #00b8d4)4d` }}>Smart</span>
                             </h3>
                             {isAiSummaryExpanded
                                 ? <ChevronUp className="w-5 h-5" style={{ color: c.textMuted }} />

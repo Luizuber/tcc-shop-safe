@@ -70,11 +70,18 @@ export class DecisionEngineService {
           const diffPercentage = ((data.price - averagePrice) / averagePrice) * 100;
           priceAnalysis.percentage = Math.round(Math.abs(diffPercentage));
 
-          if (diffPercentage <= -20) {
+          const maxDiscount = data.maxPriceDiscount || 30;
+
+          if (diffPercentage <= -maxDiscount) {
             priceAnalysis.comparison = 'BELOW';
-            score -= 40;
-            warnings.push({ type: 'SUSPICIOUS_PRICE', message: 'Preço excessivamente baixo (mais de 20% de desconto). Cuidado: Risco elevado de golpe ou produto falsificado.' });
-            decisions.push({ type: 'negative', label: 'Preço Irreal', description: 'O valor está mais de 20% abaixo do mercado, indicando altíssimo risco de fraude.' });
+            score -= 50; // Penalidade mais alta para desconto extremo
+            warnings.push({ type: 'COUNTERFEIT_RISK', message: `Preço excessivamente baixo (mais de ${maxDiscount}% de desconto). Cuidado: Risco elevado de produto falsificado.` });
+            decisions.push({ type: 'negative', label: 'Possível Produto Falso', description: `O valor está ${Math.round(Math.abs(diffPercentage))}% abaixo do mercado, indicando risco de ser um item não original.` });
+          } else if (diffPercentage <= -20) {
+            priceAnalysis.comparison = 'BELOW';
+            score -= 30;
+            warnings.push({ type: 'SUSPICIOUS_PRICE', message: 'Preço significativamente abaixo da média de mercado.' });
+            decisions.push({ type: 'negative', label: 'Preço Irreal', description: 'O valor está muito abaixo do mercado, indicando risco de fraude.' });
           } else if (diffPercentage < -15) {
             priceAnalysis.comparison = 'BELOW';
             score -= 20;

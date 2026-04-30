@@ -3,4 +3,5 @@ export class AnalyzeProductDto {
   price: number;
   productUrl: string;
   seller: string;
+  maxPriceDiscount?: number;
 }

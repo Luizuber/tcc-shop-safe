@@ -12,8 +12,8 @@ export function Settings({ onBack, onMinimize }: SettingsProps) {
     const { theme, toggleTheme } = useTheme();
     const c = getColors(theme);
     const {
-        autoAnalysis, showWarnings, notifications, minTrustScore,
-        updateAutoAnalysis, updateShowWarnings, updateNotifications, updateMinTrustScore
+        autoAnalysis, showWarnings, notifications, minTrustScore, maxPriceDiscount,
+        updateAutoAnalysis, updateShowWarnings, updateNotifications, updateMinTrustScore, updateMaxPriceDiscount
     } = useSettings();
 
     const hoverBtn = (e: React.MouseEvent<HTMLButtonElement>, enter: boolean) => {
@@ -70,6 +70,21 @@ export function Settings({ onBack, onMinimize }: SettingsProps) {
                             className="w-full h-1.5 rounded-full appearance-none cursor-pointer" style={{ background: c.progressTrack, accentColor: c.accent }} />
                         <p className="text-[10px] mt-4 leading-relaxed" style={{ color: c.textMuted }}>
                             Você será avisado se a pontuação de confiança da loja for inferior a <strong style={{ color: c.accent }}>{minTrustScore}</strong>.
+                        </p>
+                    </div>
+                </div>
+
+                <div className="mb-6">
+                    <h3 className="text-[10px] font-black uppercase tracking-[0.2em] mb-3" style={{ color: c.textMuted }}>RISCO DE FALSIFICAÇÃO</h3>
+                    <div className="rounded-2xl p-4" style={{ background: c.bgCard, border: `1px solid ${c.borderSubtle}` }}>
+                        <div className="flex items-center justify-between mb-4">
+                            <span className="text-xs font-medium" style={{ color: c.textSecondary }}>Alerta de preço irreal</span>
+                            <span className="text-xl font-black" style={{ color: c.scoreRed }}>{maxPriceDiscount}%</span>
+                        </div>
+                        <input type="range" min="10" max="80" step="5" value={maxPriceDiscount} onChange={(e) => updateMaxPriceDiscount(Number(e.target.value))}
+                            className="w-full h-1.5 rounded-full appearance-none cursor-pointer" style={{ background: c.progressTrack, accentColor: c.scoreRed }} />
+                        <p className="text-[10px] mt-4 leading-relaxed" style={{ color: c.textMuted }}>
+                            Você será avisado se o preço estiver <strong style={{ color: c.scoreRed }}>{maxPriceDiscount}%</strong> ou mais abaixo da média de mercado (possível item não original).
                         </p>
                     </div>
                 </div>

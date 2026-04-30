@@ -43,7 +43,7 @@ const MOCK_FAILURE_DATA: StoreAnalysis = {
 
 const PanelContent: React.FC = () => {
     const { theme } = useTheme();
-    const { autoAnalysis } = useSettings();
+    const { autoAnalysis, maxPriceDiscount } = useSettings();
     const c = getColors(theme);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
@@ -72,7 +72,14 @@ const PanelContent: React.FC = () => {
         try {
             setLoading(true);
             setError(null);
-            const result = await analyzeProduct(productData);
+            
+            // Inclui as configurações do usuário na requisição
+            const requestData = {
+                ...productData,
+                maxPriceDiscount
+            };
+            
+            const result = await analyzeProduct(requestData);
 
             let validatedPrice = productData.price;
             let priceCorrectedByApi = false;
@@ -169,6 +176,17 @@ const PanelContent: React.FC = () => {
             }
         };
 
+        window.addEventListener('message', handleMessage);
+        return () => window.removeEventListener('message', handleMessage);
+    }, []);
+
+    // SITE ACCENT HANDLER (Chameleon)
+    useEffect(() => {
+        const handleMessage = (event: MessageEvent) => {
+            if (event.data?.type === 'SSA_SITE_ACCENT' && event.data.color) {
+                document.documentElement.style.setProperty('--host-accent', event.data.color);
+            }
+        };
         window.addEventListener('message', handleMessage);
         return () => window.removeEventListener('message', handleMessage);
     }, []);

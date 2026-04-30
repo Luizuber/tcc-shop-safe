@@ -15,6 +15,7 @@ export function WarningBadge({ warning, colors }: WarningBadgeProps) {
             case 'low-reputation': return <Star className="w-4 h-4" />;
             case 'new-store': return <Clock className="w-4 h-4" />;
             case 'poor-reviews': return <TrendingDown className="w-4 h-4" />;
+            case 'counterfeit-risk': return <AlertTriangle className="w-4 h-4" />;
             default: return <AlertTriangle className="w-4 h-4" />;
         }
     };
@@ -31,6 +32,8 @@ export function WarningBadge({ warning, colors }: WarningBadgeProps) {
                 return { bg: `${colors.accent}14`, border: `${colors.accent}40`, text: colors.accent, icon: colors.accent };
             case 'poor-reviews':
                 return { bg: `${colors.scoreRed}14`, border: `${colors.scoreRed}40`, text: colors.scoreRed, icon: colors.scoreRed };
+            case 'counterfeit-risk':
+                return { bg: `${colors.scoreRed}26`, border: `${colors.scoreRed}80`, text: colors.scoreRed, icon: colors.scoreRed };
             default:
                 return { bg: `${colors.accent}14`, border: `${colors.accent}40`, text: colors.textSecondary, icon: colors.textMuted };
         }

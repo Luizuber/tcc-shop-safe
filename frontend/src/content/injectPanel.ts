@@ -1,5 +1,9 @@
 
 function isProductPage(): boolean {
+  const url = window.location.href.toLowerCase();
+  const hostname = window.location.hostname;
+  const isShopee = hostname.includes('shopee.com.br');
+
   const ogType = document.querySelector('meta[property="og:type"]')?.getAttribute('content');
   if (ogType === 'product') return true;
 
@@ -12,9 +16,11 @@ function isProductPage(): boolean {
     }
   }
 
-  const url = window.location.href.toLowerCase();
   const productPatterns = ['/p/', '/produto/', '/product/', '/dp/', '/item/'];
   if (productPatterns.some(p => url.includes(p))) return true;
+
+  // Regra específica para Shopee
+  if (isShopee && url.includes('-i.')) return true;
 
   return false;
 }
@@ -133,12 +139,20 @@ function getProductPrice(): number {
     } catch (e) { }
   }
 
-  // 2. SELETORES ESPECIFICOS (MERCADO LIVRE, ETC)
+  // 2. SELETORES ESPECIFICOS (MERCADO LIVRE, SHOPEE, ETC)
+  const isShopee = window.location.hostname.includes('shopee.com.br');
+  
   const specificSelectors = [
     '.ui-pdp-price__second-line .andes-money-amount__fraction', // Mercado Livre
     '[data-testid="price-value"]',
     '.price-tag-fraction'
   ];
+
+  if (isShopee) {
+    // Seletores comuns da Shopee (podem variar pois são ofuscados, mas estes são frequentes)
+    specificSelectors.push('.vZ976u'); 
+    specificSelectors.push('.flex.items-center.G2747v');
+  }
 
   for (const selector of specificSelectors) {
     const el = document.querySelector(selector);
@@ -211,6 +225,22 @@ function getProductPrice(): number {
   return 0;
 }
 
+function getSiteAccentColor(): string {
+  const hostname = window.location.hostname;
+  if (hostname.includes('shopee.com.br')) return '#ee4d2d';
+  if (hostname.includes('mercadolivre.com.br')) return '#ffe600';
+  if (hostname.includes('amazon.com')) return '#ff9900';
+  if (hostname.includes('magazineluiza.com.br')) return '#0086ff';
+  if (hostname.includes('americanas.com.br')) return '#e60014';
+  if (hostname.includes('casasbahia.com.br')) return '#003399';
+  
+  // Tenta extrair a cor primária do tema se não estiver na lista
+  const themeColor = document.querySelector('meta[name="theme-color"]')?.getAttribute('content');
+  if (themeColor) return themeColor;
+
+  return '#00b8d4'; // Fallback default
+}
+
 function getProductData() {
   const title =
     document.querySelector('meta[property="og:title"]')?.getAttribute('content') ||
@@ -242,6 +272,12 @@ function sendDataToIframe(iframe: HTMLIFrameElement) {
     iframe.contentWindow?.postMessage({
       type: 'SSA_PRODUCT_DATA',
       payload: data
+    }, '*');
+
+    // Envia a cor do site para o efeito Camaleão
+    iframe.contentWindow?.postMessage({
+      type: 'SSA_SITE_ACCENT',
+      color: getSiteAccentColor()
     }, '*');
   }
 }

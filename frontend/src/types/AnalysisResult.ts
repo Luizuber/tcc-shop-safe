@@ -3,7 +3,7 @@ export type Screen = 'popup' | 'details' | 'prices' | 'settings';
 
 export interface Warning {
     id: string;
-    type: 'high-risk' | 'suspicious-price' | 'low-reputation' | 'new-store' | 'poor-reviews';
+    type: 'high-risk' | 'suspicious-price' | 'low-reputation' | 'new-store' | 'poor-reviews' | 'counterfeit-risk';
     label: string;
     description: string;
 }
@@ -68,4 +68,5 @@ export interface AnalysisRequest {
     productName?: string;
     price?: number;
     seller?: string;
+    maxPriceDiscount?: number;
 }
