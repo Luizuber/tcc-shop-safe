@@ -90,42 +90,75 @@ if (document.readyState === 'loading') {
 }
 
 function extractPrimaryColor(): string {
-    // 1. Check meta theme-color (Standard way for mobile/browsers)
+    // Helper to check if a color is "vibrant" (not too close to white, black, or gray)
+    const isVibrant = (color: string) => {
+        if (!color || color === 'transparent' || color.includes('rgba(0, 0, 0, 0)')) return false;
+        
+        // Simple RGB to grayscale check
+        const match = color.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
+        if (match) {
+            const r = parseInt(match[1]);
+            const g = parseInt(match[2]);
+            const b = parseInt(match[3]);
+            
+            // Avoid pure white/black
+            if ((r > 240 && g > 240 && b > 240) || (r < 20 && g < 20 && b < 20)) return false;
+            
+            // Avoid grays (where R, G, and B are very close)
+            const max = Math.max(r, g, b);
+            const min = Math.min(r, g, b);
+            if (max - min < 30) return false; // Low saturation
+        }
+        return true;
+    };
+
+    // 1. Check meta theme-color
     const themeColor = document.querySelector('meta[name="theme-color"]')?.getAttribute('content');
     if (themeColor && themeColor !== '#ffffff' && themeColor !== '#000000') {
-        console.log('[Shop Safe AI] Detected Accent Color from meta:', themeColor);
+        console.log('[Shop Safe AI] Color from meta:', themeColor);
         return themeColor;
     }
 
-    // 2. Try to find "Buy" or "Add to Cart" button colors - Very common for brand identity
+    // 2. Scan "App Bar" and Header elements
+    const appBarSelectors = [
+        'header', '.header', '#header', 
+        '.nav-bar', '.navbar', '.top-bar', 
+        '.app-bar', '[class*="header"]', '[class*="nav"]'
+    ];
+    
+    for (const selector of appBarSelectors) {
+        const el = document.querySelector(selector);
+        if (el) {
+            const style = window.getComputedStyle(el);
+            const bg = style.backgroundColor;
+            if (isVibrant(bg)) {
+                console.log('[Shop Safe AI] Color from App Bar:', bg);
+                return bg;
+            }
+            // If header is neutral, try its borders or prominent icons/text
+            const border = style.borderBottomColor || style.borderTopColor;
+            if (isVibrant(border)) return border;
+        }
+    }
+
+    // 3. Scan Action Buttons (Add to cart / Buy)
     const actionSelectors = [
         'button[class*="buy"]', 'button[class*="comprar"]', 
         'button[class*="cart"]', 'button[class*="carrinho"]',
-        '[id*="buy"]', '[id*="comprar"]',
-        '.btn-primary', '.button-primary'
+        '.btn-primary', '.button-primary', '.btn-main'
     ];
     
     for (const selector of actionSelectors) {
         const el = document.querySelector(selector);
         if (el) {
             const bg = window.getComputedStyle(el).backgroundColor;
-            if (bg && bg !== 'rgba(0, 0, 0, 0)' && bg !== 'transparent' && bg !== 'rgb(255, 255, 255)' && bg !== 'rgb(0, 0, 0)') {
-                console.log('[Shop Safe AI] Detected Accent Color from button:', bg);
+            if (isVibrant(bg)) {
+                console.log('[Shop Safe AI] Color from Action Button:', bg);
                 return bg;
             }
         }
     }
 
-    // 3. Try to find main header background
-    const header = document.querySelector('header');
-    if (header) {
-        const bg = window.getComputedStyle(header).backgroundColor;
-        if (bg && bg !== 'rgba(0, 0, 0, 0)' && bg !== 'transparent' && bg !== 'rgb(255, 255, 255)' && bg !== 'rgb(0, 0, 0)') {
-            console.log('[Shop Safe AI] Detected Accent Color from header:', bg);
-            return bg;
-        }
-    }
-
-    // Fallback: Default Cyberpunk Cyan/Blue
+    // Fallback: Default Cyberpunk Blue
     return '#00b8d4';
 }
