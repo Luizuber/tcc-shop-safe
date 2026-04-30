@@ -86,18 +86,18 @@ export const darkColors: ThemeColors = {
     bgHeader: 'rgba(10, 20, 45, 0.95)',
     bgFooter: 'rgba(10, 20, 45, 0.95)',
 
-    borderPrimary: 'rgba(0, 180, 212, 0.2)',
-    borderSubtle: 'rgba(0, 180, 212, 0.15)',
-    borderAccent: 'rgba(0, 180, 212, 0.3)',
+    borderPrimary: 'color-mix(in srgb, var(--host-accent, #00b8d4), transparent 80%)',
+    borderSubtle: 'color-mix(in srgb, var(--host-accent, #00b8d4), transparent 85%)',
+    borderAccent: 'color-mix(in srgb, var(--host-accent, #00b8d4), transparent 70%)',
 
     textPrimary: '#e0e6f0',
     textSecondary: '#8a9ab5',
     textMuted: '#5a6a82',
     textLabel: '#cdd9e5',
 
-    accent: '#00b8d4',
-    accentSubtle: 'rgba(0, 180, 212, 0.15)',
-    accentGlow: 'rgba(0, 180, 212, 0.1)',
+    accent: 'var(--host-accent, #00b8d4)',
+    accentSubtle: 'color-mix(in srgb, var(--host-accent, #00b8d4), transparent 85%)',
+    accentGlow: 'color-mix(in srgb, var(--host-accent, #00b8d4), transparent 90%)',
 
     scoreGreen: '#00e5a0',
     scoreYellow: '#f5a623',
@@ -127,20 +127,20 @@ export const darkColors: ThemeColors = {
     panelShadow: '0 0 40px rgba(0, 180, 212, 0.08), 0 20px 60px rgba(0,0,0,0.5)',
 
     floatingBg: 'linear-gradient(135deg, #0a2a5c, #0d1f44)',
-    floatingBorder: '1px solid rgba(0,180,212,0.4)',
-    floatingGlow: '0 0 20px rgba(0,180,212,0.3)',
-    floatingIcon: '#00b8d4',
+    floatingBorder: '1px solid color-mix(in srgb, var(--host-accent, #00b8d4), transparent 60%)',
+    floatingGlow: '0 0 20px color-mix(in srgb, var(--host-accent, #00b8d4), transparent 70%)',
+    floatingIcon: 'var(--host-accent, #00b8d4)',
 
-    badgeBg: 'rgba(0, 180, 212, 0.15)',
-    badgeBorder: '1px solid rgba(0, 180, 212, 0.3)',
-    badgeText: '#00b8d4',
+    badgeBg: 'color-mix(in srgb, var(--host-accent, #00b8d4), transparent 85%)',
+    badgeBorder: '1px solid color-mix(in srgb, var(--host-accent, #00b8d4), transparent 70%)',
+    badgeText: 'var(--host-accent, #00b8d4)',
 
-    toggleOn: '#00b8d4',
+    toggleOn: 'var(--host-accent, #00b8d4)',
     toggleOff: 'rgba(255,255,255,0.1)',
-    toggleGlow: '0 0 10px rgba(0,184,212,0.3)',
+    toggleGlow: '0 0 10px color-mix(in srgb, var(--host-accent, #00b8d4), transparent 70%)',
 
-    scrollThumb: 'rgba(0, 180, 212, 0.3)',
-    scrollThumbHover: 'rgba(0, 180, 212, 0.5)',
+    scrollThumb: 'color-mix(in srgb, var(--host-accent, #00b8d4), transparent 70%)',
+    scrollThumbHover: 'color-mix(in srgb, var(--host-accent, #00b8d4), transparent 50%)',
 };
 
 export const lightColors: ThemeColors = {
@@ -153,16 +153,16 @@ export const lightColors: ThemeColors = {
 
     borderPrimary: 'rgba(15, 23, 42, 0.1)',
     borderSubtle: 'rgba(15, 23, 42, 0.05)',
-    borderAccent: 'rgba(14, 165, 233, 0.3)',
+    borderAccent: 'color-mix(in srgb, var(--host-accent, #0284c7), transparent 70%)',
 
     textPrimary: '#0f172a',
     textSecondary: '#334155',
     textMuted: '#64748b',
     textLabel: '#1e293b',
 
-    accent: '#0284c7', // stronger cyan/blue for contrast
-    accentSubtle: 'rgba(2, 132, 199, 0.1)',
-    accentGlow: 'rgba(2, 132, 199, 0.1)',
+    accent: 'var(--host-accent, #0284c7)',
+    accentSubtle: 'color-mix(in srgb, var(--host-accent, #0284c7), transparent 90%)',
+    accentGlow: 'color-mix(in srgb, var(--host-accent, #0284c7), transparent 92%)',
 
     scoreGreen: '#059669',
     scoreYellow: '#d97706',
@@ -192,20 +192,20 @@ export const lightColors: ThemeColors = {
     panelShadow: '0 20px 60px rgba(0,0,0,0.1), 0 4px 20px rgba(0,0,0,0.05)',
 
     floatingBg: 'linear-gradient(135deg, #0284c7, #0369a1)',
-    floatingBorder: '1px solid rgba(2, 132, 199, 0.5)',
-    floatingGlow: '0 4px 20px rgba(2, 132, 199, 0.3)',
+    floatingBorder: '1px solid color-mix(in srgb, var(--host-accent, #0284c7), transparent 50%)',
+    floatingGlow: '0 4px 20px color-mix(in srgb, var(--host-accent, #0284c7), transparent 70%)',
     floatingIcon: '#ffffff',
 
-    badgeBg: 'rgba(2, 132, 199, 0.1)',
-    badgeBorder: '1px solid rgba(2, 132, 199, 0.2)',
-    badgeText: '#0284c7',
+    badgeBg: 'color-mix(in srgb, var(--host-accent, #0284c7), transparent 90%)',
+    badgeBorder: '1px solid color-mix(in srgb, var(--host-accent, #0284c7), transparent 80%)',
+    badgeText: 'var(--host-accent, #0284c7)',
 
-    toggleOn: '#0284c7',
+    toggleOn: 'var(--host-accent, #0284c7)',
     toggleOff: 'rgba(15, 23, 42, 0.15)',
-    toggleGlow: '0 0 8px rgba(2, 132, 199, 0.2)',
+    toggleGlow: '0 0 8px color-mix(in srgb, var(--host-accent, #0284c7), transparent 80%)',
 
-    scrollThumb: 'rgba(15, 23, 42, 0.2)',
-    scrollThumbHover: 'rgba(15, 23, 42, 0.35)',
+    scrollThumb: 'color-mix(in srgb, var(--host-accent, #0284c7), transparent 80%)',
+    scrollThumbHover: 'color-mix(in srgb, var(--host-accent, #0284c7), transparent 65%)',
 };
 
 export function getColors(theme: 'light' | 'dark'): ThemeColors {

@@ -3,6 +3,11 @@
     "name": "Shop Safe AI",
     "version": "1.0.0",
     "description": "Suporte à decisão baseado em IA para compras online",
+    "icons": {
+        "16": "icon16.png",
+        "48": "icon48.png",
+        "128": "icon128.png"
+    },
     "permissions": [
         "activeTab",
         "scripting",
@@ -11,7 +16,7 @@
     ],
     "host_permissions": [
         "<all_urls>",
-        "http://localhost:3000/*"
+        "https://tcc-shop-safe.onrender.com/*"
     ],
     "background": {
         "service_worker": "background.js",
@@ -29,7 +34,8 @@
         }
     ],
     "action": {
-        "default_title": "Shop Safe AI"
+        "default_title": "Shop Safe AI",
+        "default_icon": "icon128.png"
     },
     "commands": {
         "toggle-panel": {

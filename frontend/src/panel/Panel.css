@@ -8,6 +8,8 @@
   z-index: 2147483647;
   transition: none;
   pointer-events: auto;
+  --host-font: 'Inter', sans-serif;
+  --host-accent: #00b8d4;
   font-family: var(--host-font, 'Inter', system-ui, -apple-system, sans-serif);
 }
 
