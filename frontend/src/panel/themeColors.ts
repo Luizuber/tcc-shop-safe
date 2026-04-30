@@ -111,9 +111,9 @@ export const darkColors: ThemeColors = {
     progressGradientYellow: 'linear-gradient(90deg, #f5a623, #f7c948)',
     progressGradientRed: 'linear-gradient(90deg, #ff4d6a, #ff6b81)',
 
-    btnPrimaryBg: 'linear-gradient(135deg, #0a2a5c 0%, #0d1f44 100%)',
-    btnPrimaryBorder: 'rgba(0, 180, 212, 0.3)',
-    btnPrimaryGlow: '0 0 15px rgba(0, 180, 212, 0.1), inset 0 1px 0 rgba(0, 180, 212, 0.2)',
+    btnPrimaryBg: 'linear-gradient(135deg, color-mix(in srgb, var(--host-accent, #00b8d4), black 40%) 0%, color-mix(in srgb, var(--host-accent, #00b8d4), black 60%) 100%)',
+    btnPrimaryBorder: 'color-mix(in srgb, var(--host-accent, #00b8d4), transparent 50%)',
+    btnPrimaryGlow: '0 0 15px color-mix(in srgb, var(--host-accent, #00b8d4), transparent 80%), inset 0 1px 0 color-mix(in srgb, var(--host-accent, #00b8d4), transparent 70%)',
 
     warningBg: 'rgba(255, 77, 106, 0.1)',
     warningBorder: 'rgba(255, 77, 106, 0.3)',
@@ -176,9 +176,9 @@ export const lightColors: ThemeColors = {
     progressGradientYellow: 'linear-gradient(90deg, #d97706, #f59e0b)',
     progressGradientRed: 'linear-gradient(90deg, #dc2626, #ef4444)',
 
-    btnPrimaryBg: 'linear-gradient(135deg, #0284c7 0%, #0369a1 100%)',
-    btnPrimaryBorder: 'rgba(2, 132, 199, 0.5)',
-    btnPrimaryGlow: '0 4px 14px rgba(2, 132, 199, 0.25)',
+    btnPrimaryBg: 'linear-gradient(135deg, var(--host-accent, #0284c7) 0%, color-mix(in srgb, var(--host-accent, #0284c7), black 20%) 100%)',
+    btnPrimaryBorder: 'color-mix(in srgb, var(--host-accent, #0284c7), transparent 40%)',
+    btnPrimaryGlow: '0 4px 14px color-mix(in srgb, var(--host-accent, #0284c7), transparent 70%)',
 
     warningBg: 'rgba(220, 38, 38, 0.08)',
     warningBorder: 'rgba(220, 38, 38, 0.25)',
