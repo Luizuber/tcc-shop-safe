@@ -92,21 +92,38 @@ if (document.readyState === 'loading') {
 function extractPrimaryColor(): string {
     // 1. Check meta theme-color (Standard way for mobile/browsers)
     const themeColor = document.querySelector('meta[name="theme-color"]')?.getAttribute('content');
-    if (themeColor) return themeColor;
+    if (themeColor && themeColor !== '#ffffff' && themeColor !== '#000000') {
+        console.log('[Shop Safe AI] Detected Accent Color from meta:', themeColor);
+        return themeColor;
+    }
 
-    // 2. Try to find main header or logo color (Common for e-commerces)
+    // 2. Try to find "Buy" or "Add to Cart" button colors - Very common for brand identity
+    const actionSelectors = [
+        'button[class*="buy"]', 'button[class*="comprar"]', 
+        'button[class*="cart"]', 'button[class*="carrinho"]',
+        '[id*="buy"]', '[id*="comprar"]',
+        '.btn-primary', '.button-primary'
+    ];
+    
+    for (const selector of actionSelectors) {
+        const el = document.querySelector(selector);
+        if (el) {
+            const bg = window.getComputedStyle(el).backgroundColor;
+            if (bg && bg !== 'rgba(0, 0, 0, 0)' && bg !== 'transparent' && bg !== 'rgb(255, 255, 255)' && bg !== 'rgb(0, 0, 0)') {
+                console.log('[Shop Safe AI] Detected Accent Color from button:', bg);
+                return bg;
+            }
+        }
+    }
+
+    // 3. Try to find main header background
     const header = document.querySelector('header');
     if (header) {
         const bg = window.getComputedStyle(header).backgroundColor;
         if (bg && bg !== 'rgba(0, 0, 0, 0)' && bg !== 'transparent' && bg !== 'rgb(255, 255, 255)' && bg !== 'rgb(0, 0, 0)') {
+            console.log('[Shop Safe AI] Detected Accent Color from header:', bg);
             return bg;
         }
-    }
-
-    // 3. Try to find primary button color
-    const primaryBtn = document.querySelector('button[class*="primary"], a[class*="primary"], .btn-primary, .button-primary');
-    if (primaryBtn) {
-        return window.getComputedStyle(primaryBtn).backgroundColor;
     }
 
     // Fallback: Default Cyberpunk Cyan/Blue
