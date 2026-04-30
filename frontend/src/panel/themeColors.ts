@@ -83,7 +83,7 @@ export const darkColors: ThemeColors = {
     bgSecondary: 'rgba(10, 20, 45, 0.7)',
     bgCard: 'rgba(10, 20, 45, 0.7)',
     bgCardHover: 'rgba(0, 180, 212, 0.05)',
-    bgHeader: 'var(--host-accent, rgba(10, 20, 45, 0.95))',
+    bgHeader: '#ffffff',
     bgFooter: 'rgba(10, 20, 45, 0.95)',
 
     borderPrimary: 'color-mix(in srgb, var(--host-accent, #00b8d4), transparent 80%)',
@@ -148,7 +148,7 @@ export const lightColors: ThemeColors = {
     bgSecondary: 'rgba(241, 245, 249, 0.9)',
     bgCard: '#f8fafc', // very light slate
     bgCardHover: 'rgba(14, 165, 233, 0.08)',
-    bgHeader: 'var(--host-accent, #f1f5f9)',
+    bgHeader: '#ffffff',
     bgFooter: '#f1f5f9',
 
     borderPrimary: 'rgba(15, 23, 42, 0.1)',

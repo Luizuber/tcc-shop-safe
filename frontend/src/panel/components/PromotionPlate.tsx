@@ -23,7 +23,7 @@ export function PromotionPlate({ messages = DEFAULT_MESSAGES, speed = 15 }: Prom
         <div className="ssa-promo-plate group">
             {/* Letreiro Deslizante */}
             <div className="ssa-promo-ticker">
-                <div className="ssa-promo-text" style={{ animationDuration: `${speed}s`, color: theme === 'dark' ? 'rgba(255,255,255,0.9)' : c.textPrimary }}>
+                <div className="ssa-promo-text" style={{ animationDuration: `${speed}s`, color: 'var(--host-accent, #00b8d4)' }}>
                     <span>{combinedMessage}</span>
                     <span>{combinedMessage}</span>
                 </div>
