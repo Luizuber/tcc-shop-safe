@@ -16,6 +16,7 @@ interface ExtensionPopupProps {
     onMinimize: () => void;
 }
 
+import { PromotionPlate } from './PromotionPlate';
 
 export function ExtensionPopup({ analysis, alternativeSellers: _, onViewDetails, onViewPrices, onOpenSettings, onMinimize }: ExtensionPopupProps) {
     const [isAiSummaryExpanded, setIsAiSummaryExpanded] = useState(true);
@@ -36,23 +37,14 @@ export function ExtensionPopup({ analysis, alternativeSellers: _, onViewDetails,
     return (
         <div className="h-full flex flex-col overflow-hidden" style={{ background: c.bgPrimary, color: c.textPrimary }}>
             {/* Header */}
-            <div className="flex items-center justify-between px-4 py-3.5 transition-colors relative overflow-hidden ssa-drag-handle cursor-grab active:cursor-grabbing" style={{ background: c.bgHeader, borderBottom: `1px solid ${c.borderPrimary}` }}>
+            <div className="flex items-center justify-between px-2 py-3.5 transition-colors relative overflow-hidden ssa-drag-handle cursor-grab active:cursor-grabbing" style={{ background: c.bgHeader, borderBottom: `1px solid ${c.borderPrimary}` }}>
                 {/* Background ambient glow */}
                 <div className="absolute top-0 left-0 w-32 h-full opacity-20 blur-xl pointer-events-none" style={{ background: `linear-gradient(90deg, ${c.accent}, transparent)` }}></div>
 
-                <div className="flex-1 flex items-center justify-center relative z-10 overflow-hidden">
-                    <div className="ssa-ticker-container">
-                        <div className="ssa-ticker-text">
-                            <span className="font-black tracking-widest text-[14px] leading-none mr-12" style={{ color: theme === 'dark' ? '#ffffff' : c.textPrimary }}>
-                                SHOP SAFE • AI PROTECTION
-                            </span>
-                            <span className="font-black tracking-widest text-[14px] leading-none mr-12" style={{ color: theme === 'dark' ? '#ffffff' : c.textPrimary }}>
-                                SHOP SAFE • AI PROTECTION
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <div className="flex items-center gap-2 relative z-10">
+                {/* Promotion Plate (Middle) */}
+                <PromotionPlate />
+
+                <div className="flex items-center gap-2 relative z-10 pr-2">
                     <button onClick={onMinimize} className="p-1.5 rounded-md transition-all flex items-center justify-center group" style={{ background: c.bgCard, border: `1px solid ${c.borderSubtle}`, color: c.textMuted }}
                         onMouseEnter={e => { e.currentTarget.style.background = c.accentSubtle; e.currentTarget.style.color = c.accent; e.currentTarget.style.borderColor = c.borderAccent; }}
                         onMouseLeave={e => { e.currentTarget.style.background = c.bgCard; e.currentTarget.style.color = c.textMuted; e.currentTarget.style.borderColor = c.borderSubtle; }} aria-label="Minimizar">

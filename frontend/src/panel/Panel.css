@@ -57,23 +57,73 @@
   background: rgba(0, 180, 212, 0.5);
 }
 
-/* Ticker Marquee Animation */
-@keyframes ssa-ticker {
-  from { transform: translateX(100%); }
-  to { transform: translateX(-100%); }
+/* Promotion Plate (Smart Banner) */
+.ssa-promo-plate {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  height: 34px;
+  padding: 0 4px;
+  flex: 1;
+  margin: 0 12px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1), 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-.ssa-ticker-container {
+.ssa-promo-plate:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1), 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.ssa-promo-logo {
+  flex-shrink: 0;
+  width: 32px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  margin-right: 8px;
+  z-index: 10;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.ssa-promo-ticker {
   flex: 1;
   overflow: hidden;
   white-space: nowrap;
   mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-  margin: 0 10px;
 }
 
-.ssa-ticker-text {
+.ssa-promo-text {
   display: inline-block;
-  animation: ssa-ticker 12s linear infinite;
-  font-weight: 900;
-  letter-spacing: 0.1em;
+  white-space: nowrap;
+  padding-left: 100%;
+  animation: ssa-promo-scroll 15s linear infinite;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.ssa-promo-text span {
+  padding-right: 50px;
+}
+
+.ssa-promo-plate:hover .ssa-promo-text {
+  animation-play-state: paused;
+}
+
+@keyframes ssa-promo-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
 }
