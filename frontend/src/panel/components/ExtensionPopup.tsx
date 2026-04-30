@@ -37,19 +37,19 @@ export function ExtensionPopup({ analysis, alternativeSellers: _, onViewDetails,
     return (
         <div className="h-full flex flex-col overflow-hidden" style={{ background: c.bgPrimary, color: c.textPrimary }}>
             {/* Header */}
-            <div className="flex items-center justify-between px-2 py-3.5 transition-colors relative overflow-hidden ssa-drag-handle cursor-grab active:cursor-grabbing" style={{ background: c.bgHeader, borderBottom: `1px solid ${c.borderPrimary}` }}>
+            <div className="flex items-center justify-between px-2 py-3.5 transition-colors relative overflow-hidden ssa-drag-handle cursor-grab active:cursor-grabbing" style={{ background: c.bgHeader }}>
                 {/* Background ambient glow */}
                 <div className="absolute top-0 left-0 w-32 h-full opacity-20 blur-xl pointer-events-none" style={{ background: `linear-gradient(90deg, ${c.accent}, transparent)` }}></div>
 
                 {/* Left: Minimize */}
                 <button onClick={onMinimize} className="p-1.5 rounded-md transition-all flex items-center justify-center group relative z-10 ml-1" 
                     style={{ 
-                        background: theme === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.03)', 
-                        border: theme === 'dark' ? '1px solid rgba(255,255,255,0.1)' : '1px solid rgba(0,0,0,0.05)', 
+                        background: 'transparent', 
+                        border: 'none', 
                         color: 'var(--host-accent, #00b8d4)' 
                     }}
-                    onMouseEnter={e => { e.currentTarget.style.background = theme === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.06)'; e.currentTarget.style.transform = 'scale(1.1)'; }}
-                    onMouseLeave={e => { e.currentTarget.style.background = theme === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.03)'; e.currentTarget.style.transform = 'scale(1)'; }} aria-label="Minimizar">
+                    onMouseEnter={e => { e.currentTarget.style.background = theme === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.03)'; e.currentTarget.style.transform = 'scale(1.1)'; }}
+                    onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.transform = 'scale(1)'; }} aria-label="Minimizar">
                     <Minus className="w-3.5 h-3.5" />
                 </button>
 
@@ -59,12 +59,12 @@ export function ExtensionPopup({ analysis, alternativeSellers: _, onViewDetails,
                 {/* Right: Settings */}
                 <button onClick={onOpenSettings} className="p-1.5 rounded-md transition-all flex items-center justify-center group relative z-10 mr-1" 
                     style={{ 
-                        background: theme === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.03)', 
-                        border: theme === 'dark' ? '1px solid rgba(255,255,255,0.1)' : '1px solid rgba(0,0,0,0.05)', 
+                        background: 'transparent', 
+                        border: 'none', 
                         color: 'var(--host-accent, #00b8d4)' 
                     }}
-                    onMouseEnter={e => { e.currentTarget.style.background = theme === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.06)'; e.currentTarget.style.transform = 'scale(1.1)'; }}
-                    onMouseLeave={e => { e.currentTarget.style.background = theme === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.03)'; e.currentTarget.style.transform = 'scale(1)'; }} aria-label="Settings">
+                    onMouseEnter={e => { e.currentTarget.style.background = theme === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.03)'; e.currentTarget.style.transform = 'scale(1.1)'; }}
+                    onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.transform = 'scale(1)'; }} aria-label="Settings">
                     <SettingsIcon className="w-3.5 h-3.5 group-hover:rotate-90 transition-transform duration-300" />
                 </button>
             </div>
