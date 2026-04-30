@@ -41,21 +41,22 @@ export function ExtensionPopup({ analysis, alternativeSellers: _, onViewDetails,
                 {/* Background ambient glow */}
                 <div className="absolute top-0 left-0 w-32 h-full opacity-20 blur-xl pointer-events-none" style={{ background: `linear-gradient(90deg, ${c.accent}, transparent)` }}></div>
 
-                {/* Promotion Plate (Middle) */}
-                <PromotionPlate />
+                {/* Left: Minimize */}
+                <button onClick={onMinimize} className="p-1.5 rounded-md transition-all flex items-center justify-center group relative z-10 ml-1" style={{ background: 'rgba(255,255,255,0.08)', border: `1px solid rgba(255,255,255,0.1)`, color: theme === 'dark' ? '#ffffff' : c.textMuted }}
+                    onMouseEnter={e => { e.currentTarget.style.background = c.accentSubtle; e.currentTarget.style.color = c.accent; e.currentTarget.style.borderColor = c.borderAccent; }}
+                    onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.08)'; e.currentTarget.style.color = theme === 'dark' ? '#ffffff' : c.textMuted; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'; }} aria-label="Minimizar">
+                    <Minus className="w-3.5 h-3.5" />
+                </button>
 
-                <div className="flex items-center gap-2 relative z-10 pr-2">
-                    <button onClick={onMinimize} className="p-1.5 rounded-md transition-all flex items-center justify-center group" style={{ background: c.bgCard, border: `1px solid ${c.borderSubtle}`, color: c.textMuted }}
-                        onMouseEnter={e => { e.currentTarget.style.background = c.accentSubtle; e.currentTarget.style.color = c.accent; e.currentTarget.style.borderColor = c.borderAccent; }}
-                        onMouseLeave={e => { e.currentTarget.style.background = c.bgCard; e.currentTarget.style.color = c.textMuted; e.currentTarget.style.borderColor = c.borderSubtle; }} aria-label="Minimizar">
-                        <Minus className="w-3.5 h-3.5" />
-                    </button>
-                    <button onClick={onOpenSettings} className="p-1.5 rounded-md transition-all flex items-center justify-center group" style={{ background: c.bgCard, border: `1px solid ${c.borderSubtle}`, color: c.textMuted }}
-                        onMouseEnter={e => { e.currentTarget.style.background = c.accentSubtle; e.currentTarget.style.color = c.accent; e.currentTarget.style.borderColor = c.borderAccent; }}
-                        onMouseLeave={e => { e.currentTarget.style.background = c.bgCard; e.currentTarget.style.color = c.textMuted; e.currentTarget.style.borderColor = c.borderSubtle; }} aria-label="Settings">
-                        <SettingsIcon className="w-3.5 h-3.5 group-hover:rotate-90 transition-transform duration-300" />
-                    </button>
-                </div>
+                {/* Promotion Plate (Middle) */}
+                <PromotionPlate speed={45} />
+
+                {/* Right: Settings */}
+                <button onClick={onOpenSettings} className="p-1.5 rounded-md transition-all flex items-center justify-center group relative z-10 mr-1" style={{ background: 'rgba(255,255,255,0.08)', border: `1px solid rgba(255,255,255,0.1)`, color: theme === 'dark' ? '#ffffff' : c.textMuted }}
+                    onMouseEnter={e => { e.currentTarget.style.background = c.accentSubtle; e.currentTarget.style.color = c.accent; e.currentTarget.style.borderColor = c.borderAccent; }}
+                    onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.08)'; e.currentTarget.style.color = theme === 'dark' ? '#ffffff' : c.textMuted; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'; }} aria-label="Settings">
+                    <SettingsIcon className="w-3.5 h-3.5 group-hover:rotate-90 transition-transform duration-300" />
+                </button>
             </div>
 
             {/* Main Content */}

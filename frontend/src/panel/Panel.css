@@ -83,20 +83,6 @@
   box-shadow: 0 0 20px color-mix(in srgb, var(--host-accent, #00b8d4), transparent 80%), 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
-.ssa-promo-logo {
-  flex-shrink: 0;
-  width: 36px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: color-mix(in srgb, var(--host-accent, #00b8d4), transparent 85%);
-  border-radius: 8px;
-  margin-right: 8px;
-  z-index: 10;
-  border-right: 1px solid color-mix(in srgb, var(--host-accent, #00b8d4), transparent 80%);
-}
-
 .ssa-promo-ticker {
   flex: 1;
   overflow: hidden;
