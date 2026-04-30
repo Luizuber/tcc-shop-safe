@@ -1,6 +1,3 @@
-import { useTheme } from '../context/ThemeContext';
-import { getColors } from '../themeColors';
-
 interface PromotionPlateProps {
     messages?: string[];
     speed?: number; // duration in seconds
@@ -15,7 +12,6 @@ const DEFAULT_MESSAGES = [
 ];
 
 export function PromotionPlate({ messages = DEFAULT_MESSAGES, speed = 15 }: PromotionPlateProps) {
-    const { theme } = useTheme();
     const combinedMessage = messages.join(' • ');
 
     return (
