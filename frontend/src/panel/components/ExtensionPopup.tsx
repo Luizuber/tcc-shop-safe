@@ -50,29 +50,21 @@ export function ExtensionPopup({ analysis, alternativeSellers: _, onViewDetails,
                 <div className="absolute top-0 left-0 w-32 h-full opacity-20 blur-xl pointer-events-none" style={{ background: `linear-gradient(90deg, ${c.accent}, transparent)` }}></div>
 
                 <div className="flex items-center gap-2.5 relative z-10">
-                    <div className="relative flex items-center justify-center group">
-                        {/* Efeito de Aura (Pulse & Glow) */}
-                        <div className="absolute inset-[-2px] rounded-xl animate-aura-pulse" style={{ background: c.accent }}></div>
-                        <div className="absolute inset-[-6px] rounded-2xl animate-aura-pulse-slow" style={{ background: c.accent }}></div>
-                        <div className="absolute inset-[-5px] rounded-full opacity-30 blur-2xl transition-all duration-500 group-hover:opacity-60 group-hover:blur-3xl" style={{ background: c.accent }}></div>
-
-                        {/* Logo Principal */}
+                    <div className="relative flex items-center justify-center">
+                        {/* Logo Principal (Clean & Integrated) */}
                         <div className="relative flex items-center justify-center p-2 rounded-lg backdrop-blur-md z-10 transition-transform duration-300 group-hover:scale-105"
                             style={{
-                                background: `linear-gradient(135deg, ${c.accentSubtle}, ${c.bgCard})`,
-                                border: `1px solid ${c.accent}66`,
-                                boxShadow: `0 0 20px ${c.accent}4d, inset 0 0 15px ${c.accent}33`
+                                background: `rgba(255, 255, 255, 0.1)`,
+                                border: `1px solid rgba(255, 255, 255, 0.2)`,
                             }}>
-                            <CyberShield color={c.accent} />
-                            {/* Brilho interno para dar aspecto de vidro (Glassmorphism) */}
-                            <div className="absolute inset-0 rounded-lg opacity-60 pointer-events-none" style={{ borderTop: `1px solid ${c.textPrimary}4d`, borderLeft: `1px solid ${c.textPrimary}26` }}></div>
+                            <CyberShield color={theme === 'dark' ? '#ffffff' : c.textPrimary} />
                         </div>
                     </div>
                     <div className="flex flex-col">
-                        <span className="font-black tracking-widest text-[14px] leading-none bg-clip-text text-transparent" style={{ backgroundImage: `linear-gradient(90deg, ${c.textPrimary}, ${c.accent})` }}>
+                        <span className="font-black tracking-widest text-[14px] leading-none" style={{ color: theme === 'dark' ? '#ffffff' : c.textPrimary }}>
                             SHOP SAFE
                         </span>
-                        <span className="font-bold tracking-widest text-[8px] uppercase mt-0.5" style={{ color: c.textMuted }}>
+                        <span className="font-bold tracking-widest text-[8px] uppercase mt-0.5" style={{ color: theme === 'dark' ? 'rgba(255,255,255,0.7)' : c.textMuted }}>
                             AI Protection
                         </span>
                     </div>

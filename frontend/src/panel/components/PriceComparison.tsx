@@ -35,15 +35,18 @@ export function PriceComparison({ analysis, alternativeSellers: _, onBack, onMin
 
     return (
         <div className="h-full flex flex-col" style={{ background: c.bgPrimary, color: c.textPrimary }}>
-            <div className="flex items-center justify-between px-4 py-3 transition-colors ssa-drag-handle cursor-grab active:cursor-grabbing" style={{ background: c.bgHeader, borderBottom: `1px solid ${c.borderPrimary}` }}>
-                <div className="flex items-center gap-3 flex-1 min-w-0">
-                    <button onClick={onBack} className="p-2 rounded-lg transition-all" style={{ color: c.textMuted }} onMouseEnter={e => hoverBtn(e, true)} onMouseLeave={e => hoverBtn(e, false)} aria-label="Back"><ArrowLeft className="w-4 h-4" /></button>
+            <div className="flex items-center justify-between px-4 py-3 transition-colors ssa-drag-handle cursor-grab active:cursor-grabbing relative overflow-hidden" style={{ background: c.bgHeader, borderBottom: `1px solid ${c.borderPrimary}` }}>
+                {/* Background ambient glow */}
+                <div className="absolute top-0 left-0 w-32 h-full opacity-20 blur-xl pointer-events-none" style={{ background: `linear-gradient(90deg, ${c.accent}, transparent)` }}></div>
+                
+                <div className="flex items-center gap-3 flex-1 min-w-0 relative z-10">
+                    <button onClick={onBack} className="p-2 rounded-lg transition-all" style={{ color: theme === 'dark' ? '#ffffff' : c.textMuted }} onMouseEnter={e => hoverBtn(e, true)} onMouseLeave={e => hoverBtn(e, false)} aria-label="Back"><ArrowLeft className="w-4 h-4" /></button>
                     <div className="flex-1 min-w-0">
-                        <h1 className="font-semibold truncate" style={{ color: c.textLabel }}>Comparar Preços</h1>
-                        <p className="text-[10px] mt-0.5 truncate uppercase tracking-wider font-bold" style={{ color: c.textMuted }}>{analysis.productName}</p>
+                        <h1 className="font-semibold truncate uppercase tracking-tight" style={{ color: theme === 'dark' ? '#ffffff' : c.textLabel }}>Comparar Preços</h1>
+                        <p className="text-[10px] mt-0.5 truncate uppercase tracking-wider font-bold" style={{ color: theme === 'dark' ? 'rgba(255,255,255,0.7)' : c.textMuted }}>{analysis.productName}</p>
                     </div>
                 </div>
-                <button onClick={onMinimize} className="p-2 rounded-lg transition-all" style={{ color: c.textMuted }} onMouseEnter={e => hoverBtn(e, true)} onMouseLeave={e => hoverBtn(e, false)} aria-label="Minimizar"><Minus className="w-4 h-4" /></button>
+                <button onClick={onMinimize} className="p-2 rounded-lg transition-all relative z-10" style={{ color: theme === 'dark' ? '#ffffff' : c.textMuted }} onMouseEnter={e => hoverBtn(e, true)} onMouseLeave={e => hoverBtn(e, false)} aria-label="Minimizar"><Minus className="w-4 h-4" /></button>
             </div>
 
             <div className="flex-1 overflow-y-auto px-4 pt-4 pb-20">

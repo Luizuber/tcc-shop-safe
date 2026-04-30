@@ -20,12 +20,15 @@ export function DetailedAnalysis({ analysis, onBack, onMinimize }: DetailedAnaly
 
     return (
         <div className="h-full flex flex-col overflow-hidden transition-colors" style={{ background: c.bgPrimary, color: c.textPrimary }}>
-            <div className="flex items-center justify-between px-4 py-3 ssa-drag-handle cursor-grab active:cursor-grabbing" style={{ background: c.bgHeader, borderBottom: `1px solid ${c.borderPrimary}` }}>
-                <div className="flex items-center gap-3">
-                    <button onClick={onBack} className="p-2 rounded-lg transition-all" style={{ color: c.textMuted }} onMouseEnter={e => hoverBtn(e, true)} onMouseLeave={e => hoverBtn(e, false)} aria-label="Voltar"><ArrowLeft className="w-4 h-4" /></button>
-                    <h1 className="font-bold uppercase tracking-tight" style={{ color: c.textLabel }}>Análise Detalhada</h1>
+            <div className="flex items-center justify-between px-4 py-3 ssa-drag-handle cursor-grab active:cursor-grabbing relative overflow-hidden" style={{ background: c.bgHeader, borderBottom: `1px solid ${c.borderPrimary}` }}>
+                {/* Background ambient glow */}
+                <div className="absolute top-0 left-0 w-32 h-full opacity-20 blur-xl pointer-events-none" style={{ background: `linear-gradient(90deg, ${c.accent}, transparent)` }}></div>
+                
+                <div className="flex items-center gap-3 relative z-10">
+                    <button onClick={onBack} className="p-2 rounded-lg transition-all" style={{ color: theme === 'dark' ? '#ffffff' : c.textMuted }} onMouseEnter={e => hoverBtn(e, true)} onMouseLeave={e => hoverBtn(e, false)} aria-label="Voltar"><ArrowLeft className="w-4 h-4" /></button>
+                    <h1 className="font-bold uppercase tracking-tight" style={{ color: theme === 'dark' ? '#ffffff' : c.textLabel }}>Análise Detalhada</h1>
                 </div>
-                <button onClick={onMinimize} className="p-2 rounded-lg transition-all" style={{ color: c.textMuted }} onMouseEnter={e => hoverBtn(e, true)} onMouseLeave={e => hoverBtn(e, false)} aria-label="Minimizar"><Minus className="w-4 h-4" /></button>
+                <button onClick={onMinimize} className="p-2 rounded-lg transition-all relative z-10" style={{ color: theme === 'dark' ? '#ffffff' : c.textMuted }} onMouseEnter={e => hoverBtn(e, true)} onMouseLeave={e => hoverBtn(e, false)} aria-label="Minimizar"><Minus className="w-4 h-4" /></button>
             </div>
 
             <div className="flex-1 overflow-y-auto px-4 pt-4 pb-20">
