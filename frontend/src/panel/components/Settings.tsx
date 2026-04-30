@@ -79,12 +79,12 @@ export function Settings({ onBack, onMinimize }: SettingsProps) {
                     <div className="rounded-2xl p-4" style={{ background: c.bgCard, border: `1px solid ${c.borderSubtle}` }}>
                         <div className="flex items-center justify-between mb-4">
                             <span className="text-xs font-medium" style={{ color: c.textSecondary }}>Alerta de preço irreal</span>
-                            <span className="text-xl font-black" style={{ color: c.scoreRed }}>{maxPriceDiscount}%</span>
+                            <span className="text-xl font-black" style={{ color: c.accent }}>{maxPriceDiscount}%</span>
                         </div>
                         <input type="range" min="10" max="80" step="5" value={maxPriceDiscount} onChange={(e) => updateMaxPriceDiscount(Number(e.target.value))}
-                            className="w-full h-1.5 rounded-full appearance-none cursor-pointer" style={{ background: c.progressTrack, accentColor: c.scoreRed }} />
+                            className="w-full h-1.5 rounded-full appearance-none cursor-pointer" style={{ background: c.progressTrack, accentColor: c.accent }} />
                         <p className="text-[10px] mt-4 leading-relaxed" style={{ color: c.textMuted }}>
-                            Você será avisado se o preço estiver <strong style={{ color: c.scoreRed }}>{maxPriceDiscount}%</strong> ou mais abaixo da média de mercado (possível item não original).
+                            Você será avisado se o preço estiver <strong style={{ color: c.accent }}>{maxPriceDiscount}%</strong> ou mais abaixo da média de mercado (possível item não original).
                         </p>
                     </div>
                 </div>
